@@ -19,9 +19,7 @@ const propTypes = {
 const defaultProps = {
   type: 'checkbox',
   checked: false,
-  input: {
-    value: false
-  },
+  input: {},
   className: ''
 }
 
@@ -40,20 +38,20 @@ class CheckboxButton extends Component {
 
   render() {
     const { label, type, input, checked, className, value, id } = this.props
-
+    console.log('Checkbox', input)
     return (
       <label
-        className={`cnr-as-button ${checked ? 'checked' : ''} ${className}`}
+        className={`cnr-as-button ${(input.checked || checked) ? 'checked' : ''} ${className}`}
         htmlFor={id}
         role="button">
 
         <input
           type={type}
-          onChange={this.handleOnChange}
-          {...input}
-          id={id}
+          onChange={input.onChange || this.handleOnChange}
           value={input.value || value}
           checked={input.checked || checked}
+          {...input}
+          id={id}
         />
         {label}
       </label>
