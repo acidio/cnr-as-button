@@ -8,7 +8,8 @@ module.exports = {
   devtool: 'cheap-module-source-map',
   entry: [
     'babel-polyfill',
-    './src/index'
+    './src/index',
+    './src/sass/main.scss'
   ],
   output: {
     path: path.join(__dirname, 'dist'),
