@@ -4,10 +4,12 @@ A React based component to transform checkbox and radio into buttons.
 
 ## Get started
 
+```javascript
 npm install cnr-as-button
 
 import { ButtonGroup, RadioButton, CheckboxButton } from 'cnr-as-button'
 import 'cnr-as-button/dist/cnr-as-button.min.css'
+```
 
 ## Using CheckboxButton
 
