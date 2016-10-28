@@ -1,18 +1,30 @@
 {
   "name": "cnr-as-button",
   "version": "0.0.1",
+  "main": "./lib/index.js",
+  "jsnext:main": "./es/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/acidio/cnr-as-button"
+  },
   "scripts": {
     "clean": "rimraf dist",
-    "build:webpack": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js",
-    "build": "npm run clean && npm run build:webpack",
+    "build": "npm run build:lib && npm run build:es && npm run build:umd && npm run build:umd:min",
+    "build:lib": "babel src --out-dir lib",
+    "build:es": "cross-env BABEL_ENV=es babel src --out-dir es",
+    "build:umd": "cross-env NODE_ENV=development webpack src/index.js dist/cnr-as-button.js",
+    "build:umd:min": "cross-env NODE_ENV=production webpack src/index.js dist/cnr-as-button.min.js",
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
     "test:watch": "npm run test -- --watch",
     "start:old": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
     "start": "node devServer.js"
   },
-  "author": "",
+  "author": "Acidio Alan da Rosa <acidio@gmail.com> (http://github.com/acidio)",
+  "license": "MIT",
+  "homepage": "http://acidio.github.io/cnr-as-button/",
   "devDependencies": {
     "autoprefixer": "^6.5.1",
+    "babel-cli": "^6.18.0",
     "babel-core": "^6.17.0",
     "babel-eslint": "^7.0.0",
     "babel-loader": "^6.2.5",
@@ -28,11 +40,9 @@
     "eslint-plugin-react": "^6.4.1",
     "eventsource-polyfill": "^0.9.6",
     "extract-text-webpack-plugin": "^1.0.1",
+    "lodash-webpack-plugin": "^0.10.2",
     "node-sass": "^3.10.1",
     "postcss-loader": "^1.0.0",
-    "react-redux": "^4.4.5",
-    "redux": "^3.6.0",
-    "redux-form": "^6.1.1",
     "rimraf": "^2.5.4",
     "sass-loader": "^4.0.2",
     "style-loader": "^0.13.1",
@@ -42,6 +52,12 @@
   },
   "dependencies": {
     "react": "^15.3.2",
-    "react-dom": "^15.3.2"
+    "react-dom": "^15.3.2",
+    "react-redux": "^4.4.5",
+    "redux": "^3.6.0",
+    "redux-form": "^6.1.1"
+  },
+  "peerDependencies": {
+    "react": "^15.0.0"
   }
 }

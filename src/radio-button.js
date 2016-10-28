@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { ButtonGroup, CheckboxButton } from './index'
+import ButtonGroup from './button-group'
+import CheckboxButton from './checkbox-button'
 
 const propTypes = {
   options: React.PropTypes.array.isRequired

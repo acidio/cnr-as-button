@@ -37,9 +37,9 @@ class CheckboxButton extends Component {
   }
 
   render() {
-    const { label, type, input, checked, className, value, id } = this.props
-    console.log('Checkbox', input)
-    return (
+    const { label, type, input, checked, className, value, id, bootstrap } = this.props
+
+    const html = (
       <label
         className={`cnr-as-button ${(input.checked || checked) ? 'checked' : ''} ${className}`}
         htmlFor={id}
@@ -56,6 +56,12 @@ class CheckboxButton extends Component {
         {label}
       </label>
     )
+
+    if(bootstrap) {
+      return <div className="btn-group">{html}</div>
+    }
+
+    return html
   }
 }
 
