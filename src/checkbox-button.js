@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import './sass/main.scss'
 
 const propTypes = {
   label: React.PropTypes.string.isRequired,
